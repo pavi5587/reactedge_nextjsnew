@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { background: #f7f9fc; color: #142331; margin: 0; }
+::selection { background: #d9f2a8; color: #142331; }
+.grid-bg {
+  background-image: linear-gradient(rgba(77,116,38,.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77,116,38,.075) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, transparent 95%);
+}
+.eyebrow { letter-spacing: .18em; text-transform: uppercase; font-size: .72rem; font-weight: 700; }
+.panel { border: 1px solid #dce4ec; background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(247,250,252,.96)); box-shadow: 0 12px 36px rgba(20,42,66,.055); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid #75a928; outline-offset: 4px; }
+
+/* Motion details retained for light theme */
+@keyframes pulse-ring {
+  0% { transform: scale(.86); opacity: .65; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+@keyframes scanline {
+  0% { transform: translateY(-110%); }
+  100% { transform: translateY(430%); }
+}
+@keyframes signal-bars {
+  0%, 100% { transform: scaleY(.35); opacity: .45; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+.pulse-ring { animation: pulse-ring 2.6s ease-out infinite; }
+.scanline { animation: scanline 5s linear infinite; }
+.signal-bar { transform-origin: bottom; animation: signal-bars 1.4s ease-in-out infinite; }
+.signal-bar:nth-child(2n) { animation-delay: .25s; }
+.signal-bar:nth-child(3n) { animation-delay: .5s; }
+.glass-panel { background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(246,250,252,.84)); backdrop-filter: blur(18px); }
+.text-gradient { background: linear-gradient(110deg, #142331 10%, #65951f 78%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
